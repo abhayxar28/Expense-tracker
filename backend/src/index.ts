@@ -22,5 +22,5 @@ app.use('/api/v1/incomes', incomeRouter)
 app.use('/api/v1/', aiRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+  console.log(`Server is running `);
 });
