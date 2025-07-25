@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SignupPage from './pages/auth/signup-page'
 import SigninPage from './pages/auth/signin-page'
-import Dashboard from './pages/dashboard/dashboard' // <-- contains <Outlet />
+import Dashboard from './pages/dashboard/dashboard'
 import DashboardComponent from './components/dashboard/DashboardComponent'
 import IncomeComponent from './components/income/IncomeComponent'
 import ExpenseComponent from './components/expenses/ExpenseComponent'

@@ -8,10 +8,10 @@ import { prisma } from "../../lib/prisma";
 dotenv.config();
 const router = express.Router();
 
-const openai = new OpenAI({
-  baseURL: `${process.env.OPEN_API_KEY}`,
-  apiKey: process.env.OPENROUTER_API_KEY,
-});
+  const openai = new OpenAI({
+    baseURL: `${process.env.OPEN_API_KEY}`,
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
 
 router.get("/ai-summary", authenticateJWT, async (req: AuthenticatedRequest, res: Response) => {
   try {

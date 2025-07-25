@@ -27,7 +27,6 @@ export default function AiAnalysisComponent() {
 
       const raw = res.data.result || "No reply from AI.";
 
-      // Custom parse logic
       const lines = raw.split("\n").map((line: string) => line.trim()).filter((line: string | any[]) => line.length > 0);
 
       const summaryObj: typeof summary = {
@@ -37,18 +36,15 @@ export default function AiAnalysisComponent() {
 
       for (let line of lines) {
         if (line.toLowerCase().includes("total income")) {
-          // Remove "Total Income:" prefix
           summaryObj.income = line.replace(/.*total income:\s*/i, "");
         }
         else if (line.toLowerCase().includes("total expenses")) {
-          // Remove numbering like "2." from expenses
           summaryObj.expenses = line.replace(/^\d+\.\s*/, "");
         }
         else if (line.toLowerCase().includes("total savings")) summaryObj.savings = line;
         else if (line.toLowerCase().includes("savings rate")) summaryObj.savingRate = line;
         else if (/^[-–]\s/.test(line)) {
           const cleanedLine = line.replace(/^[-–]\s*/, "");
-          // Skip the savings line in breakdown
           if (!cleanedLine.toLowerCase().includes("savings:")) {
             summaryObj.breakdown?.push(cleanedLine);
           }
@@ -66,11 +62,8 @@ export default function AiAnalysisComponent() {
     }
   };
 
-  // Helper function to remove ** and * markers
   const cleanText = (text: string) => {
-    // Remove ** markers
     let cleaned = text.replace(/\*\*/g, '');
-    // Remove * markers but only when they're used for emphasis (not when part of numbers)
     cleaned = cleaned.replace(/\*([^*]+)\*/g, '$1');
     return cleaned;
   };
