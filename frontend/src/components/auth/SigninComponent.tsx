@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { SigninParams } from "@ratatsam22/common";
 import { toast } from "sonner";
-const DATABASE_URL = import.meta.env.VITE_DATABASE_URL 
+
+const DATABASE_URL = import.meta.env.VITE_DATABASE_URL;
 
 export default function SignInComponent() {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ export default function SignInComponent() {
     if (token) {
       navigate("/dashboard");
     }
-  }, []);
+  }, [navigate]);
 
   async function handleSignin(e: React.FormEvent) {
     e.preventDefault();
@@ -31,7 +32,7 @@ export default function SignInComponent() {
         signinParams
       );
 
-      const {token, user} = response.data;
+      const { token, user } = response.data;
 
       if (token && user) {
         toast.success("Signin successful");
@@ -43,8 +44,7 @@ export default function SignInComponent() {
       }
     } catch (e: any) {
       const msg = e.response?.data?.message || "Sign-in failed";
-      
-      
+
       if (msg.includes("Email")) {
         toast.error("Incorrect email");
       } else if (msg.includes("Password")) {
@@ -58,14 +58,11 @@ export default function SignInComponent() {
       setIsPending(true);
     }
   }
-  return (
-    <div className="flex h-screen w-full relative">
-      <div className="absolute top-6 left-6 z-10">
-        <h1 className="text-2xl font-bold text-purple-700">Expense Tracker</h1>
-      </div>
 
+  return (
+    <div className="flex h-screen w-full">
       <div className="flex-1 flex items-center justify-center bg-white px-6">
-        <div className="w-full max-w-md mt-10">
+        <div className="w-full max-w-md">
           <h2 className="text-xl font-semibold mb-1">Welcome Back</h2>
           <p className="text-sm text-gray-500 mb-6">
             Please enter your details to log in
@@ -113,7 +110,7 @@ export default function SignInComponent() {
               type="submit"
               className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md transition cursor-pointer"
             >
-              {isPending? "Sign in": "Signing in..."}
+              {isPending ? "Sign in" : "Signing in..."}
             </button>
           </form>
 
@@ -127,14 +124,6 @@ export default function SignInComponent() {
             </a>
           </p>
         </div>
-      </div>
-
-      <div className="hidden md:flex flex-1 bg-purple-50 items-center justify-center p-8">
-        <img
-          src="/image/auth-image.png"
-          alt="Stats Preview"
-          className="w-full h-full object-contain max-w-[600px]"
-        />
       </div>
     </div>
   );

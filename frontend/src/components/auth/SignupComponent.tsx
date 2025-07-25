@@ -4,14 +4,15 @@ import type { SignupParams } from "@ratatsam22/common";
 import axios from "axios";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
-const DATABASE_URL = import.meta.env.VITE_DATABASE_URL 
+
+const DATABASE_URL = import.meta.env.VITE_DATABASE_URL;
 
 export default function SignupComponent() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [profileImage, setProfileImage] = useState(""); 
+  const [profileImage, setProfileImage] = useState("");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(true);
 
@@ -63,13 +64,9 @@ export default function SignupComponent() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row h-screen w-full">
-      <div className="md:w-3/5 w-full bg-white px-8 py-12 flex flex-col relative">
-        <div className="absolute top-6 left-8">
-          <h3 className="text-2xl font-bold text-purple-700">Expense Tracker</h3>
-        </div>
-
-        <div className="w-full max-w-lg mx-auto mt-20">
+    <div className="flex flex-col md:flex-row h-screen w-full items-center justify-center">
+      <div className="md:w-3/5 w-full bg-white flex items-center justify-center h-screen px-6">
+        <div className="w-full max-w-lg">
           <h2 className="text-2xl font-bold mb-1">Create an Account</h2>
           <p className="text-sm text-gray-500 mb-6">
             Join us today by entering your details below.
@@ -150,7 +147,7 @@ export default function SignupComponent() {
               type="submit"
               className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md transition cursor-pointer"
             >
-              {isPending ? "Sign Up": "Signing Up..." }
+              {isPending ? "Sign Up" : "Signing Up..."}
             </button>
           </form>
 
@@ -164,14 +161,6 @@ export default function SignupComponent() {
             </a>
           </p>
         </div>
-      </div>
-
-      <div className="md:w-2/5 w-full hidden md:block">
-        <img
-          src="/image/auth-image.png"
-          alt="Signup visual"
-          className="w-full h-full object-cover"
-        />
       </div>
     </div>
   );
