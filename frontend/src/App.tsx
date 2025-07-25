@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './index.css'; 
 import SignupPage from './pages/auth/signup-page'
 import SigninPage from './pages/auth/signin-page'
 import Dashboard from './pages/dashboard/dashboard'
@@ -9,6 +10,7 @@ import AiAnalysisComponent from './components/ai/AiAnalysisComponent'
 import LandingPage from './pages/LandingPage'
 
 function App() {
+  
   return (
     <BrowserRouter>
       <Routes>
