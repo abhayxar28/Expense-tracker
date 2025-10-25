@@ -39,6 +39,7 @@ router.post("/signup", async (req: AuthenticatedRequest, res: Response) => {
 
     res.status(201).json({ message: "User created successfully" });
   } catch (err) {
+    console.log(err)
     res.status(500).json({ message: "Internal server error" });
   }
 });
