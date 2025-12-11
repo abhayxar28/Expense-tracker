@@ -120,16 +120,11 @@
 }
 
 /* Hide scrollbar for Chrome, Safari, and Edge */
-::-webkit-scrollbar {
-  display: none;
+html {
+  scrollbar-width: none;        /* Firefox */
+  overflow-y: scroll;           /* Keep scroll behavior */
 }
 
-/* Hide scrollbar for Firefox */
-* {
-  scrollbar-width: none;
-}
-
-/* Hide scrollbar for IE, Edge Legacy */
-* {
-  -ms-overflow-style: none;
+html::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Edge */
 }
