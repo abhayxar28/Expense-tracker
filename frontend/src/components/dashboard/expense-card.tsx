@@ -82,7 +82,7 @@ export default function ExpensesCard() {
       <div className="bg-white rounded-2xl shadow p-4 md:p-6">
         <div className="flex justify-between items-center mb-4 md:mb-6">
           <h2 className="text-base md:text-lg font-semibold">Expenses</h2>
-          <Link to={'/dashboard/expenses'} className="flex items-center text-sm text-[#7b44f2] bg-[#f4ecff] px-3 py-1 rounded-full hover:underline">
+          <Link to={'/dashboard/expense'} className="flex items-center text-sm text-[#7b44f2] bg-[#f4ecff] px-3 py-1 rounded-full hover:underline">
             See All <ArrowRight size={16} className="ml-1" />
           </Link>
         </div>

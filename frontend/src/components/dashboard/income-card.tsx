@@ -107,7 +107,7 @@ export default function IncomeCard() {
       <div className="bg-white rounded-2xl shadow p-4 md:p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-base md:text-lg font-semibold">Income</h2>
-          <Link to={'/dashboard/incomes'} className="flex items-center text-sm text-[#7b44f2] bg-[#f4ecff] px-3 py-1 rounded-full hover:underline">
+          <Link to={'/dashboard/income'} className="flex items-center text-sm text-[#7b44f2] bg-[#f4ecff] px-3 py-1 rounded-full hover:underline">
             See All <ArrowRight size={16} className="ml-1" />
           </Link>
         </div>

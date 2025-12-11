@@ -4,6 +4,7 @@ import type { SignupParams } from "@ratatsam22/common";
 import axios from "axios";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const DATABASE_URL = import.meta.env.VITE_DATABASE_URL;
 
@@ -60,6 +61,7 @@ export default function SignupComponent() {
       }
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Signup failed");
+      setIsPending(false);
     }
   }
 
@@ -107,6 +109,7 @@ export default function SignupComponent() {
                 <label className="text-sm font-medium">Full Name</label>
                 <input
                   type="text"
+                  required
                   placeholder="John"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -116,6 +119,7 @@ export default function SignupComponent() {
               <div className="w-full">
                 <label className="text-sm font-medium">Email Address</label>
                 <input
+                  required
                   type="email"
                   placeholder="john@example.com"
                   value={email}
@@ -128,6 +132,7 @@ export default function SignupComponent() {
             <div className="relative">
               <label className="text-sm font-medium">Password</label>
               <input
+                required
                 type={showPassword ? "text" : "password"}
                 placeholder="Min 6 Characters"
                 value={password}
@@ -153,12 +158,12 @@ export default function SignupComponent() {
 
           <p className="text-sm text-center mt-6 text-gray-600">
             Already have an account?{" "}
-            <a
-              href="/signin"
+            <Link
+              to="/signin"
               className="text-purple-600 font-medium hover:underline cursor-pointer"
             >
               Login
-            </a>
+            </Link>
           </p>
         </div>
       </div>

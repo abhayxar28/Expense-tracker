@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { SigninParams } from "@ratatsam22/common";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 const DATABASE_URL = import.meta.env.VITE_DATABASE_URL;
 
@@ -76,6 +77,7 @@ export default function SignInComponent() {
               <input
                 type="email"
                 id="email"
+                required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="john@example.com"
@@ -89,6 +91,7 @@ export default function SignInComponent() {
               </label>
               <div className="relative">
                 <input
+                  required
                   type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
@@ -116,12 +119,12 @@ export default function SignInComponent() {
 
           <p className="text-sm text-center mt-6 text-gray-600">
             Don't have an account?{" "}
-            <a
-              href="/signup"
+            <Link
+              to="/signup"
               className="text-purple-600 font-medium hover:underline cursor-pointer"
             >
               Signup
-            </a>
+            </Link>
           </p>
         </div>
       </div>

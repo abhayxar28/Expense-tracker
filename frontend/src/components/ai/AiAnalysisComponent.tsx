@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -15,8 +15,11 @@ export default function AiAnalysisComponent() {
     suggestions?: string[];
   }>({});
   const [loading, setLoading] = useState(false);
+   const calledRef = useRef(false);
 
-  const fetchAISummary = async () => {
+  const fetchAISummary = useCallback(async () => {
+    if (calledRef.current) return;
+    calledRef.current = true;
     setLoading(true);
     try {
       const res = await axios.get(`${DATABASE_URL}/ai-summary`, {
@@ -55,12 +58,11 @@ export default function AiAnalysisComponent() {
       setSummary(summaryObj);
       toast.success("✅ AI summary generated!");
     } catch (e) {
-      console.error("AI error:", e);
       toast.error("❌ Failed to fetch AI summary.");
     } finally {
       setLoading(false);
     }
-  };
+  },[])
 
   const cleanText = (text: string) => {
     let cleaned = text.replace(/\*\*/g, '');
@@ -70,7 +72,7 @@ export default function AiAnalysisComponent() {
 
   useEffect(() => {
     fetchAISummary();
-  }, []);
+  }, [fetchAISummary]);
 
   return (
     <div className="bg-gradient-to-tr from-purple-50 to-white shadow-lg rounded-2xl p-6 max-w-2xl mx-auto mt-10 border border-purple-200">
