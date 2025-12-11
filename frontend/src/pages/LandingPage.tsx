@@ -41,14 +41,9 @@ export default function LandingPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("id");
+
     if (!token || !userId) {
-      if (window.location.pathname !== "/") {
-        navigate("/");
-      }
-    } else {
-      if (window.location.pathname === "/") {
-        navigate("/dashboard");
-      }
+      navigate("/");
     }
   }, [navigate]);
 
