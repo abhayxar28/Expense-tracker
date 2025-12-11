@@ -68,7 +68,7 @@ router.get("/ai-summary", auth_1.authenticateJWT, async (req, res) => {
       - Always use emojis 
       `;
         const completion = await openai.chat.completions.create({
-            model: "deepseek/deepseek-r1-0528:free",
+            model: "google/gemma-3n-e2b-it:free",
             messages: [{ role: "user", content: prompt }],
         });
         const reply = completion.choices?.[0]?.message?.content || "No reply from AI";
