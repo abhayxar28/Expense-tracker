@@ -45,7 +45,7 @@ export default function LandingPage() {
   }, [navigate]);
 
   return (
-    <div className="relative min-h-screen bg-[#f5efe9] scroll-smooth overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#f5efe9] scroll-smooth overflow-x-hidden m-0 p-0">
       <div className="absolute inset-0 z-0">
         <Aurora
           colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
@@ -97,7 +97,7 @@ export default function LandingPage() {
             <motion.button
               whileHover={{ scale: 1.06, y: -1 }}
               whileTap={{ scale: 0.97, y: 0 }}
-              className="bg-pinkAccent cursor-pointer text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-pinkAccent/40 transition-transform"
+              className="bg-pinkAccent cursor-pointer text-black px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-pinkAccent/40 transition-transform border border-white"
             >
               Try Free
             </motion.button>
@@ -287,14 +287,14 @@ interface FeatureProps {
 function Feature({ icon, title, text, delay = 0 }: FeatureProps) {
   return (
     <motion.div
-      className="group flex md:block items-start gap-4 p-5 rounded-2xl bg-white/80 border border-white/70 shadow-[0_18px_40px_rgba(15,23,42,0.08)] transition-all duration-300 cursor-pointer"
+      className="group flex md:block items-start gap-4 p-5 rounded-2xl bg-white/80 border border-white/70 shadow-[0_18px_40px_rgba(15,23,42,0.08)] transition-all duration-100 cursor-pointer"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.9 }}
       variants={fadeUpVariant(delay)}
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -10 }}
     >
-      <div className="p-3 bg-pinkAccent/10 rounded-2xl text-pinkAccent shadow-inner shadow-pinkAccent/20 mb-2 transition-transform duration-300 group-hover:scale-110">
+      <div className="p-3 bg-pinkAccent/10 rounded-2xl text-pinkAccent shadow-pinkAccent/20 mb-2 transition-transform duration-300 ">
         {icon}
       </div>
       <div>
