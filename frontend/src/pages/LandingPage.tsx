@@ -41,7 +41,8 @@ export default function LandingPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("id");
-    if (token && userId) navigate("/dashboard");
+    if (token && userId) {navigate("/dashboard")}
+    else {navigate('/')};
   }, [navigate]);
 
   return (
