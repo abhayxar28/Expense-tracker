@@ -8,23 +8,33 @@ import IncomeComponent from './components/income/IncomeComponent'
 import ExpenseComponent from './components/expenses/ExpenseComponent'
 import AiAnalysisComponent from './components/ai/AiAnalysisComponent'
 import LandingPage from './pages/LandingPage'
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route index element={<DashboardComponent />} />
-          <Route path="income" element={<IncomeComponent />} />
-          <Route path="expense" element={<ExpenseComponent />} />
-          <Route path="ai-analysis" element={<AiAnalysisComponent />} />
-        </Route>
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/signin" element={<SigninPage />} />
-      </Routes>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Routes>
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<DashboardComponent />} />
+        <Route path="income" element={<IncomeComponent />} />
+        <Route path="expense" element={<ExpenseComponent />} />
+        <Route path="ai-analysis" element={<AiAnalysisComponent />} />
+      </Route>
+
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/signin" element={<SigninPage />} />
+    </Routes>
+  </BrowserRouter>
+
   )
 }
 
