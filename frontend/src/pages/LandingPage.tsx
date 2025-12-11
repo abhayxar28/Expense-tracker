@@ -41,9 +41,17 @@ export default function LandingPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("id");
-    if (token && userId) {navigate("/dashboard")}
-    else {navigate('/')};
+    if (!token || !userId) {
+      if (window.location.pathname !== "/") {
+        navigate("/");
+      }
+    } else {
+      if (window.location.pathname === "/") {
+        navigate("/dashboard");
+      }
+    }
   }, [navigate]);
+
 
   return (
     <div className="relative min-h-screen bg-[#f5efe9] scroll-smooth overflow-x-hidden m-0 p-0">
